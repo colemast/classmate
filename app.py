@@ -21,7 +21,7 @@ students = [
 # Get all students
 @app.route('/students', methods=['GET'])
 def get_students():
-    return jsonify({'students': students})
+    return jsonify(students)
 
 # Get a single student
 @app.route('/students/<int:student_id>', methods=['GET'])
@@ -43,7 +43,7 @@ def create_student():
         'major': request.json.get('major', '')
     }
     students.append(student)
-    return jsonify({'student': student}), 201
+    return jsonify(student), 201
 
 # Update an existing student
 @app.route('/students/<int:student_id>', methods=['PUT'])
@@ -56,7 +56,7 @@ def update_student(student_id):
     student[0]['name'] = request.json.get('name', student[0]['name'])
     student[0]['age'] = request.json.get('age', student[0]['age'])
     student[0]['major'] = request.json.get('major', student[0]['major'])
-    return jsonify({'student': student[0]})
+    return jsonify(student[0])
 
 # Delete a student
 @app.route('/students/<int:student_id>', methods=['DELETE'])
